@@ -75,12 +75,16 @@ php artisan serve
 
 9. Visit `http://localhost:8000` in your browser.
 
+10. Video de funcionalidad
+https://www.loom.com/share/cbf3aa9e04c6405497f7350827458a56?sid=865b2338-98cc-42e4-ba25-c6bceac243d8
+
 ## Usage
 
 - The main page displays the list of expenses.
 - Use the filters at the top to filter by category and date range.
 - To add a new expense, click on "New Expense".
 - To edit or delete an expense, use the corresponding buttons in the list.
+
 
 ## Contributing
 
