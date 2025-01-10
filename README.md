@@ -21,11 +21,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Entendido. Vamos a abordar estos puntos uno por uno.
-
-1. Aquí está el README en inglés en un formato fácil de copiar:
-
-markdown
 # Personal Expense Manager
 
 This project is a web application developed with Laravel that allows users to register, manage, and visualize their personal expenses in a simple and efficient way.
@@ -50,40 +45,33 @@ This project is a web application developed with Laravel that allows users to re
 
 1. Clone the repository:
 
-git clone [https://github.com/your-username/expense-manager.git](https://github.com/your-username/expense-manager.git)
-plaintext
+git clone https://github.com/EdgarC97/Expense-tracker
 
 2. Navigate to the project directory:
 
 cd expense-manager
-plaintext
 
 3. Install dependencies:
 
 composer install
-plaintext
 
 4. Copy the configuration file:
 
 cp .env.example .env
-plaintext
 
 5. Generate the application key:
 
 php artisan key:generate
-plaintext
 
 6. Configure the database in the `.env` file
 
 7. Run migrations and seeders:
 
 php artisan migrate --seed
-plaintext
 
 8. Start the development server:
 
 php artisan serve
-plaintext
 
 9. Visit `http://localhost:8000` in your browser.
 
