@@ -13,6 +13,7 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         $query = Expense::with('category')->orderBy('date', 'desc');
+        $totalQuery = Expense::query(); // Query para el total general sin filtros
 
         if ($request->has('category') && $request->category != '') {
             $query->where('category_id', $request->category);
@@ -25,17 +26,18 @@ class ExpenseController extends Controller
         $expenses = $query->paginate(10);
 
         $totalCurrentPage = $expenses->sum('amount');
-        $totalOverall = $query->sum('amount');
+        $totalOverall = $totalQuery->sum('amount');
+        $totalFiltered = $query->sum('amount');
 
         $categories = Category::all();
-        $totalByCategory = Expense::selectRaw('categories.name, SUM(amount) as total')
-            ->join('categories', 'expenses.category_id', '=', 'categories.id')
+        $totalByCategory = Category::leftJoin('expenses', 'categories.id', '=', 'expenses.category_id')
+            ->selectRaw('categories.name, COALESCE(SUM(expenses.amount), 0) as total')
             ->groupBy('categories.id', 'categories.name')
             ->get();
 
         $colors = ['primary', 'success', 'info', 'warning', 'danger', 'secondary'];
 
-        return view('expenses.index', compact('expenses', 'categories', 'totalCurrentPage', 'totalOverall', 'totalByCategory', 'colors'));
+        return view('expenses.index', compact('expenses', 'categories', 'totalCurrentPage', 'totalOverall', 'totalFiltered', 'totalByCategory', 'colors'));
     }
 
     public function create()
